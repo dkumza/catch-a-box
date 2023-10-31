@@ -86,6 +86,7 @@ const countWinner = () => {
       }
       winner.textContent = "Winner is PC :(";
       resetBtn.classList.remove("hide");
+      box.classList.add("hide");
    }
 };
 roundTimer();
@@ -98,6 +99,8 @@ const resetGame = () => {
    roundNo.textContent = rounds;
    maxRounds = 3;
    time = maxTime;
+   winner.textContent = "";
+   resetBtn.classList.add("hide");
    roundTimer();
    randPositions();
 };
