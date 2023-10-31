@@ -1,0 +1,47 @@
+@import url("https://fonts.cdnfonts.com/css/helvetica-neue-5");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer @base {
+   html {
+      font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
+         "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      font-weight: 300;
+   }
+}
+
+/* form container  */
+.main-container {
+   @apply container
+    border
+    m-8
+    p-4
+    mx-auto
+    w-fit
+    text-2xl
+    flex
+    gap-4
+    items-center;
+}
+
+.game-board {
+   width: 400px;
+   height: 400px;
+   @apply border
+   relative;
+}
+
+.box {
+   @apply border
+   absolute
+   bg-gray-400;
+   width: 80px;
+   height: 80px;
+}
+
+.info {
+   width: 300px;
+   height: 400px;
+   @apply border;
+}
