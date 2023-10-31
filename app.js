@@ -82,11 +82,14 @@ const countWinner = () => {
       roundTimer();
    } else {
       if (userPoints > pcPoints) {
-         winner.textContent = "Winner is You!";
+         winner.textContent = "is You!";
+         resetBtn.classList.remove("hide");
+         box.classList.add("hide");
+      } else {
+         winner.textContent = "is PC :(";
+         resetBtn.classList.remove("hide");
+         box.classList.add("hide");
       }
-      winner.textContent = "Winner is PC :(";
-      resetBtn.classList.remove("hide");
-      box.classList.add("hide");
    }
 };
 roundTimer();
@@ -94,7 +97,9 @@ randPositions();
 
 const resetGame = () => {
    userPoints = 0;
+   plPoints.textContent = userPoints;
    pcPoints = 1;
+   computerPoints.textContent = pcPoints;
    rounds = 1;
    roundNo.textContent = rounds;
    maxRounds = 3;
