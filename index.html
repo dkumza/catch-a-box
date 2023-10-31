@@ -15,7 +15,33 @@
             </div>
          </div>
          <div class="info-container">
-            <div class="info"></div>
+            <div class="info pl-4 flex flex-col justify-between p-4">
+               <div class="center-info">
+                  <p class="">
+                     Round: <span class="round text-orange-500">1</span>
+                     <span class="total-rounds"></span>
+                  </p>
+                  <p class="mb-4">
+                     Time: <span class="time text-orange-500">3 </span> s
+                  </p>
+                  <p>
+                     User Points:
+                     <span class="play-points text-orange-500">0</span>
+                  </p>
+                  <p>
+                     PC Points: <span class="pc-points text-orange-500">0</span>
+                  </p>
+                  <p class="py-4">Winner: <span class="winner"></span></p>
+               </div>
+               <div class="center-button flex justify-center">
+                  <button
+                     onclick="resetGame()"
+                     class="reset-game border px-4 py-2 rounded hide"
+                  >
+                     Reset Game
+                  </button>
+               </div>
+            </div>
          </div>
       </div>
    </body>

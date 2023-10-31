@@ -16,26 +16,29 @@
    @apply container
     border
     m-8
-    p-4
+    p-8
     mx-auto
     w-fit
     text-2xl
     flex
-    gap-4
-    items-center;
+    gap-2
+    items-center
+    shadow-xl;
 }
 
 .game-board {
    width: 400px;
    height: 400px;
-   @apply border
+   @apply border-2
    relative;
 }
 
 .box {
    @apply border
+   border-black
    absolute
-   bg-gray-400;
+   bg-gray-400
+   hover:cursor-pointer;
    width: 80px;
    height: 80px;
 }
@@ -43,5 +46,9 @@
 .info {
    width: 300px;
    height: 400px;
-   @apply border;
+   @apply border-2;
+}
+
+.hide {
+   display: none;
 }

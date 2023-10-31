@@ -1,16 +1,34 @@
 const gameBoard = document.querySelector(".game-board");
 const box = document.querySelector(".box");
+const plPoints = document.querySelector(".play-points");
+const computerPoints = document.querySelector(".pc-points");
+const roundTime = document.querySelector(".time");
+const roundNo = document.querySelector(".round");
+const winner = document.querySelector(".winner");
+const totalRounds = document.querySelector(".total-rounds");
+const resetBtn = document.querySelector(".reset-game");
 
 let interval;
+let roundInterval;
+
 let randX = 0;
 let randY = 0;
 
 let userPoints = 0;
+let pcPoints = 1;
+let rounds = 1;
+let maxRounds = 3;
+let maxTime = 3;
+let time = 0;
+// let timerOn = true;
+
 function rand(min, max) {
    min = Math.ceil(min);
    max = Math.floor(max);
    return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
 }
+
+totalRounds.textContent = ` of ${maxRounds} rounds`;
 // get random X and Y values
 const randXandY = () => {
    randX = rand(0, 320);
@@ -25,17 +43,61 @@ const randomColor = () => {
    return `rgb(${r}, ${g}, ${b})`;
 };
 
-const randPositions = (i) => {
-   setInterval(() => {
+const roundTimer = () => {
+   time = maxTime;
+   roundInterval = setInterval(() => {
+      if (time > 0) {
+         roundTime.textContent = time--;
+      } else if (time < 1) {
+         roundTime.textContent = time--;
+         clearInterval(interval);
+         clearInterval(roundInterval);
+         countWinner();
+      }
+   }, 1000);
+};
+
+const randPositions = () => {
+   interval = setInterval(() => {
+      box.classList.remove("hide");
       randXandY();
       box.style.top = `${randY}px`;
       box.style.left = `${randX}px`;
       box.style.backgroundColor = randomColor();
+      computerPoints.textContent = pcPoints++;
    }, 1000);
 };
-randPositions();
 
 box.addEventListener("click", () => {
-   userPoints++;
-   console.log(userPoints);
+   box.classList.add("hide");
+   pcPoints--;
+   plPoints.textContent = userPoints++;
 });
+
+const countWinner = () => {
+   if (rounds < maxRounds) {
+      rounds++;
+      roundNo.textContent = rounds;
+      randPositions();
+      roundTimer();
+   } else {
+      if (userPoints > pcPoints) {
+         winner.textContent = "Winner is You!";
+      }
+      winner.textContent = "Winner is PC :(";
+      resetBtn.classList.remove("hide");
+   }
+};
+roundTimer();
+randPositions();
+
+const resetGame = () => {
+   userPoints = 0;
+   pcPoints = 1;
+   rounds = 1;
+   roundNo.textContent = rounds;
+   maxRounds = 3;
+   time = maxTime;
+   roundTimer();
+   randPositions();
+};
