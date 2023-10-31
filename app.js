@@ -45,6 +45,7 @@ const randomColor = () => {
 
 const roundTimer = () => {
    time = maxTime;
+
    roundInterval = setInterval(() => {
       if (time > 0) {
          roundTime.textContent = time--;
@@ -88,12 +89,11 @@ const countWinner = () => {
       } else {
          winner.textContent = "is PC :(";
          resetBtn.classList.remove("hide");
-         box.classList.add("hide");
       }
    }
 };
-roundTimer();
 randPositions();
+roundTimer();
 
 const resetGame = () => {
    userPoints = 0;
