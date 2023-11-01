@@ -6,6 +6,7 @@ const roundTime = document.querySelector(".time");
 const roundNo = document.querySelector(".round");
 const winner = document.querySelector(".winner");
 const totalRounds = document.querySelector(".total-rounds");
+const startGame = document.querySelector(".start-game");
 const resetBtn = document.querySelector(".reset-game");
 
 let interval;
@@ -17,8 +18,8 @@ let randY = 0;
 let userPoints = 0;
 let pcPoints = 1;
 let rounds = 1;
-let maxRounds = 3;
-let maxTime = 3;
+let maxRounds = 2;
+let maxTime = 10;
 let time = 0;
 // let timerOn = true;
 
@@ -92,13 +93,16 @@ const countWinner = () => {
       }
    }
 };
-randPositions();
-roundTimer();
+const start = () => {
+   randPositions();
+   roundTimer();
+   startGame.classList.add("hide");
+};
 
 const resetGame = () => {
    userPoints = 0;
    plPoints.textContent = userPoints;
-   pcPoints = 1;
+   pcPoints = 0;
    computerPoints.textContent = pcPoints;
    rounds = 1;
    roundNo.textContent = rounds;
